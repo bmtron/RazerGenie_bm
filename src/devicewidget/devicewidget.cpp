@@ -8,6 +8,7 @@
 #include "lightingwidget.h"
 #include "performancewidget.h"
 #include "powerwidget.h"
+#include "profilewidget.h"
 
 #include <QLabel>
 #include <QPushButton>
@@ -79,6 +80,16 @@ DeviceWidget::DeviceWidget(libopenrazer::Device *device)
         scrollArea->setWidget(widget);
 
         tabWidget->addTab(scrollArea, tr("Power"));
+    }
+
+    /* Profile tab */
+    if (ProfileWidget::isAvailable(device)) {
+        auto widget = new ProfileWidget(device);
+
+        auto scrollArea = new QScrollArea;
+        scrollArea->setWidgetResizable(true);
+        scrollArea->setWidget(widget);
+        tabWidget->addTab(scrollArea, tr("Profile"));
     }
 
     verticalLayout->addWidget(tabWidget);

@@ -3,3 +3,5 @@ builddir/
 # Ignore meson subproject, but not .wrap files
 subprojects/
 !subprojects/*.wrap
+.cache
+.qtcreator
